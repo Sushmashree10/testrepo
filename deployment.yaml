@@ -1,19 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: command
+  labels:
+    app: command
+    service: command-service
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: myapp
-  replicas: 2
+      app: command
+      service: command-service
   template:
     metadata:
       labels:
-        app: myapp
+        app: command
+        service: command-service
     spec:
+      serviceAccountName: autovoice-cmd
       containers:
-      - name: myapp
-        image: nanajanashia/argocd-app:1.2
-        ports:
-        - containerPort: 8080
+      - name: command-api
+        image: docker.na1.hsdp.io/hosting/platform/autovoiceui/command-service:1.0.9
+        ports: 
+         - containerPort: 5004
