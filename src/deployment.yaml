@@ -20,6 +20,6 @@ spec:
       serviceAccountName: autovoice-cmd
       containers:
       - name: command-api
-        image: docker.na1.hsdp.io/hosting/platform/autovoiceui/command-service:1.0.9
+        image: docker.na1.hsdp.io/hosting/platform/autovoiceui/command-service:1.0.10
         ports: 
          - containerPort: 5004
